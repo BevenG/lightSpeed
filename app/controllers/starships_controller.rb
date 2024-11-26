@@ -1,6 +1,6 @@
 class StarshipsController < ApplicationController
   def index
-    @starships = Starships
+    @starships = Starships.all
   end
 
   def show
@@ -22,6 +22,7 @@ class StarshipsController < ApplicationController
   def destroy
     @starship = Starship.find(params[:id])
     @starship.destroy
+
     # No need for app/views/starships/destroy.html.erb
     redirect_to starships_path, status: :see_other
   end

@@ -4,15 +4,17 @@ class BookingsController < ApplicationController
   end
 
   def new
+    @starship = Starship.find(params[:starship_id])
     @booking = Booking.new
   end
 
   def create
-    @user = current_user
-    @starship = Starship.find(params[:id])
     @booking = Booking.new(booking_params)
+    @user = current_user
+    @starship = Starship.find(params[:starship_id])
     @booking.user = @user
     @booking.starship = @starship
+
     if @booking.save
       redirect_to bookings_path
     else

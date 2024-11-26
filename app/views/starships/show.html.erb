@@ -1,0 +1,11 @@
+
+<div class="container">
+  <h1><%= @starship.name %></h1>
+    <p>R<%= @starship.price %></p>
+    <p><%= @starship.mass %>kg</p>
+    <p><%= @starship.top_speed %>km/h</p>
+  <p>Posted by <%= @starship.name %></p>
+</div>
+
+<button type="button" class="btn btn-secondary btn-lg">Large button</button>
+<%= link_to "Book Now", new_booking_path(@starship), class: "btn primary" %>

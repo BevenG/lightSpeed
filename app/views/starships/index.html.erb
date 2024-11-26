@@ -1,0 +1,9 @@
+<h1>Futuristic Spaceship Marketplace</h1>
+<%# <div id="carousel">
+  <!-- 3D moving carousels go here -->
+</div> %>
+<div class="spaceships">
+  <% @starships.each do |spaceship| %>
+    <%= link_to spaceship.name, spaceship %>
+  <% end %>
+</div>

@@ -1,6 +1,12 @@
 class StarshipsController < ApplicationController
   def index
     @starships = Starship.all
+    @markers = @starships.geocoded.map do |starship|
+      {
+        lat: starship.latitude,
+        lng: starship.longitude
+      }
+    end
   end
 
   def show

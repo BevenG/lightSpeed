@@ -30,6 +30,6 @@ class StarshipsController < ApplicationController
   private
 
   def starship_params
-    params.require(:starship).permit(:price, :mass, :top_speed)
+    params.require(:starship).permit(:price, :mass, :top_speed, :photo)
   end
 end

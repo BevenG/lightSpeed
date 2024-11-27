@@ -7,5 +7,7 @@
   <p>Posted by <%= @starship.name %></p>
 </div>
 
-<button type="button" class="btn btn-secondary btn-lg">Large button</button>
+<button type="button" class="btn btn-secondary btn-lg">starship</button>
 <%= link_to "Book Now", new_starship_booking_path(@starship), class: "btn primary" %>
+
+<%= cl_image_tag @starship.photo.key, height: 300, width: 400, crop: :fill %>

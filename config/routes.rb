@@ -11,7 +11,12 @@ Rails.application.routes.draw do
     resources :bookings, only: [:new, :create]
   end
 
-  resources :bookings, only: [:index]
+  resources :bookings, only: [:index] do
+    member do
+      patch :decline
+      patch :approve
+    end
+  end
   # Defines the root path route ("/")
   # root "posts#index"
 end

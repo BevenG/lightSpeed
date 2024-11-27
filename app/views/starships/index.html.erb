@@ -1,11 +1,14 @@
-<h1>Futuristic Spaceship Marketplace</h1>
-<%# <div id="carousel">
-  <!-- 3D moving carousels go here -->
-</div> %>
-<div class="spaceships">
-  <% @starships.each do |spaceship| %>
-    <%= link_to spaceship.name, spaceship %>
-  <% end %>
+<div class="container">
+  <h1>Futuristic Spaceship Marketplace</h1>
+  <%# <div id="carousel">
+    <!-- 3D moving carousels go here -->
+  </div> %>
+  <div class="spaceships">
+    <% @starships.each do |spaceship| %>
+      <%= link_to spaceship.name, spaceship %>
+      <br>
+    <% end %>
+  </div>
 </div>
 <div style="width: 100%; height: 600px;" data-controller="map"
   data-map-markers-value="<%= @markers.to_json %>"

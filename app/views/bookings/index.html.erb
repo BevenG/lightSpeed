@@ -1,2 +1,45 @@
-<h1>Bookings#index</h1>
-<p>Find me in app/views/bookings/index.html.erb</p>
+<div class="container d-flex justify-center" data-controller="reload">
+  <div class="booking">
+  <h1>My Bookings</h1>
+    <div class="spaceships">
+      <% @my_bookings.each do |booking| %>
+        <div class="card">
+          <h1><%= booking.starship.name %></h1>
+          <br>
+          <h3><%= booking.starship.user.email %></h3>
+          <br>
+          <%= booking.status %>
+          <br>
+        </div>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="booking" data-reload-target="starships">
+    <h1>Bookings</h1>
+    <div class="spaceships">
+      <% @bookings.each do |booking| %>
+        <div class="card">
+          <h1><%= booking.starship.name %></h1>
+          <br>
+          <h3><%= booking.user.email %></h3>
+
+          <% if booking.status == 'pending' %>
+            <div class="buttons">
+              <div data-reload-target="approve">
+                <%= button_to "Approve", approve_booking_path(booking), method: :patch, class: "btn btn-primary",
+                  data: { action: "submit->reload#accept" } %>
+              </div>
+              <div data-reload-target="decline">
+                <%= button_to "Decline", decline_booking_path(booking), method: :patch, class: "btn btn-danger",
+                  data: { action: "submit->reload#reject" } %>
+              </div>
+            </div>
+          <% else %>
+            <%= booking.status %>
+          <% end %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

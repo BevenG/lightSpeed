@@ -2,7 +2,15 @@
 
 h2, h3, p, a {
   font-family: $body-font;
-  color: black;
+  color: rgb(219, 215, 239);
+}
+
+body {
+  background-image: url('https://wallpaperaccess.com/full/3862033.jpg');
+  background-attachment: fixed; /* Keeps the background fixed during scrolling */
+  background-position: center; /* Ensures the background stays centered */
+  background-size: cover; /* Ensures the image covers the entire screen */
+  background-repeat: no-repeat; /* Prevents repeating the background image */
 }
 
 a {
@@ -13,6 +21,7 @@ h1 {
   text-align: center;
   margin-top: 16px;
   font-family: $body-font;
+  color: rgb(214, 192, 234);
 }
 
 .spaceships {
@@ -24,6 +33,7 @@ h1 {
 }
 
 .index-cards {
+  text-align: center;
   display: flex;
   justify-content: center;
   flex-direction: column;
@@ -32,11 +42,25 @@ h1 {
   padding: 2em;
   margin: 0.8em;
   border-radius: 8px;
+  border: solid 0.2px aliceblue;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   transition: transform 0.3s, box-shadow 0.3s;
+  text-transform: uppercase;
+  transition: 0.5s;
+  backdrop-filter: blur(2px) saturate(180%);
+  -webkit-backdrop-filter: blur(2px) saturate(180%);
+  background-color: rgba(17, 25, 40, 0.238);
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.125);
 
   img {
-    border-radius: 8px;
-
+    border-radius: 16px;
   }
 }
+
+ .index-cards:hover {
+    box-shadow: 0 0 0.5px rgb(220, 228, 234),
+                0 0 2.5px rgb(220, 228, 234),
+                0 0 5.0px rgb(220, 228, 234),
+                0 0 10.0px rgb(220, 228, 234);
+ }

@@ -3,10 +3,12 @@
   <div class="spaceships">
     <% @starships.each do |starship| %>
       <div class="index-cards">
-        <%= link_to starship do %>
-            <h3><%= starship.name %></h3>
-            <%= cl_image_tag starship.photo.key, height: 200, width: 300, crop: :fill %>
-        <% end %>
+         <div class=blob>
+            <%= link_to starship do %>
+                <h3><%= starship.name %></h3>
+                <%= cl_image_tag starship.photo.key, height: 500, width: 300, crop: :fill %>
+          <% end %>
+        </div>
       </div>
       <br>
     <% end %>

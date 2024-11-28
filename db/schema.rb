@@ -66,6 +66,9 @@ ActiveRecord::Schema[7.1].define(version: 2024_11_27_140450) do
     t.string "weapons"
     t.string "upgrades"
     t.string "image_url"
+    t.string "address"
+    t.float "latitude"
+    t.float "longitude"
     t.index ["user_id"], name: "index_starships_on_user_id"
   end
 

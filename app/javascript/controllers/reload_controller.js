@@ -11,13 +11,13 @@ export default class extends Controller {
   }
 
   accept(event) {
-    prevent default
-    
+    event.preventDefault;
+
     this.approveTarget.innerHTML = '<p>Approved</p>';
   }
 
   reject(event) {
-    prevent default
+    event.preventDefault;
 
     this.declineTarget.innerHTML = '<p>Declined</p>';
   }

@@ -1,0 +1,93 @@
+/* General Layout Styles */
+.container {
+  padding: 16px;
+}
+
+.button-main {
+  align-self: center;
+  margin: 16px;
+}
+
+/* Booking Section */
+.booking {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.bookings {
+  width: 50%;
+  padding: 32px;
+  display: flex;
+  flex-direction: column;
+}
+
+.spaceships-book {
+  display: flex;
+  flex-direction: column;
+  margin-top: 16px;
+}
+
+.starship {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  width: 90%;
+  height: 40px;
+  border: 1px solid black;
+  padding: 8px;
+  border-radius: 8px;
+  gap: 0.8em;
+}
+
+.starship .buttons .btn {
+  height: 90%;
+}
+
+/* Carousel Section */
+.carousel {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  max-width: 1200px; /* Limit size */
+  margin: 0 auto;
+  height: 300px;
+  display: flex;
+  align-items: center;
+}
+
+.carousel-track {
+  display: flex;
+  gap: 20px; /* Space between cards */
+  transition: transform 0.5s ease-in-out; /* Smooth scrolling */
+}
+
+.book-ss-card {
+  flex: 0 0 250px; /* Card width */
+  background-color: #fff;
+  border: 1px solid #ddd;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  padding: 16px;
+}
+
+.carousel .img img {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+}
+
+.book-ss-head {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+.carousel-track:hover {
+  animation-play-state: paused; /* Pauses scrolling animation */
+}

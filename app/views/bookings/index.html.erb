@@ -1,45 +1,85 @@
-<div class="container d-flex justify-center" data-controller="reload">
-  <div class="booking">
-  <h1>My Bookings</h1>
-    <div class="spaceships">
-      <% @my_bookings.each do |booking| %>
-        <div class="card">
-          <h1><%= booking.starship.name %></h1>
-          <br>
-          <h3><%= booking.starship.user.email %></h3>
-          <br>
-          <%= booking.status %>
-          <br>
+<div class="container booking">
+  <!-- Button to Add New Starship -->
+  <div class="button-main">
+    <%= link_to "Add New Starship", new_starship_path, class: 'btn btn-primary' %>
+  </div>
+
+  <!-- Carousel Section -->
+  <div class="carousel" data-controller="carousel">
+    <div class="carousel-track" data-carousel-target="track">
+      <% @starships.each do |starship| %>
+        <div class="book-ss-card" data-carousel-target="card">
+          <div class="book-ss-head">
+            <div class="name">
+              <%= starship.name %>
+            </div>
+
+            <div class="icons d-flex justify-content-between">
+              <%= link_to "Edit", edit_starship_path(starship) %>
+              <%= link_to "Destroy", starship_path(starship), method: :delete, data: { confirm: "Are you sure?" } %>
+            </div>
+          </div>
+          <div class="img">
+            <%= cl_image_tag starship.photo.key, height: 300, width: 400, crop: :fill, class: "img" %>
+          </div>
         </div>
       <% end %>
     </div>
   </div>
 
-  <div class="booking" data-reload-target="starships">
-    <h1>Bookings</h1>
-    <div class="spaceships">
-      <% @bookings.each do |booking| %>
-        <div class="card">
-          <h1><%= booking.starship.name %></h1>
-          <br>
-          <h3><%= booking.user.email %></h3>
+  <hr>
 
-          <% if booking.status == 'pending' %>
-            <div class="buttons">
-              <div data-reload-target="approve">
-                <%= button_to "Approve", approve_booking_path(booking), method: :patch, class: "btn btn-primary",
-                  data: { action: "submit->reload#accept" } %>
-              </div>
-              <div data-reload-target="decline">
-                <%= button_to "Decline", decline_booking_path(booking), method: :patch, class: "btn btn-danger",
-                  data: { action: "submit->reload#reject" } %>
-              </div>
+  <!-- Bookings Section -->
+  <div class="d-flex justify-center" data-controller="reload">
+    <!-- My Bookings -->
+    <div class="bookings">
+      <h1>My Bookings</h1>
+      <div class="spaceships-book">
+        <% @my_bookings.each do |booking| %>
+          <div class="starship">
+            <div class="name  d-flex justify-content-between">
+              <%= booking.starship.name %>
+              <%= booking.starship.user.email %>
             </div>
-          <% else %>
+            <div class="status">
             <%= booking.status %>
-          <% end %>
-        </div>
-      <% end %>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    </div>
+
+    <!-- Pending Bookings -->
+    <div class="bookings" data-reload-target="starships">
+      <h1>Pending Bookings</h1>
+      <div class="spaceships-book">
+        <% @bookings.each do |booking| %>
+          <div class="starship">
+            <div class="name d-flex justify-content-between">
+              <%= booking.starship.name %>
+              <%= booking.user.email %>
+            </div>
+
+            <% if booking.status == 'pending' %>
+
+              <div class="buttons status">
+                <div data-reload-target="approve">
+                  <%= button_to "Approve", approve_booking_path(booking), method: :patch, class: "btn btn-primary",
+                    data: { action: "submit->reload#accept" } %>
+                </div>
+                <div data-reload-target="decline">
+                  <%= button_to "Decline", decline_booking_path(booking), method: :patch, class: "btn btn-danger",
+                    data: { action: "submit->reload#reject" } %>
+                </div>
+              </div>
+            <% else %>
+              <div class="status">
+                <%= booking.status %>
+              </div>
+            <% end %>
+          </div>
+        <% end %>
+      </div>
     </div>
   </div>
 </div>

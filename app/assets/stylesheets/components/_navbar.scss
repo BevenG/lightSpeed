@@ -1,6 +1,17 @@
 .navbar-lewagon {
   justify-content: space-between;
-  background: white;
+  backdrop-filter: blur(2px) saturate(180%);
+  -webkit-backdrop-filter: blur(2px) saturate(180%);
+  background-color: rgba(17, 25, 40, 0.238);
+  border-radius: 45px;
+  border: 1px solid rgba(255, 255, 255, 0.125);
+  padding-left: 32px;
+  padding-right: 32px;
+  margin-top: 16px;
+
+  a, p, h1, h2, h3 {
+    color: aliceblue;
+  }
 }
 
 .navbar-lewagon .navbar-collapse {

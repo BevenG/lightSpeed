@@ -1,5 +1,7 @@
 # db/seeds.rb
 
+require "open-uri"
+
 # Clear existing data
 User.destroy_all
 Starship.destroy_all
@@ -14,8 +16,37 @@ users = User.create!([
   { email: 'obiwan@jedi.com', password: 'password' }
 ])
 
+# Placeholder image URL
+image_urls = [
+  "https://images.unsplash.com/photo-1651421569877-9f714e7822ba?q=80&w=1932&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+  "https://images.unsplash.com/photo-1654280983312-110b5b422397?q=80&w=1932&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+  "https://images.unsplash.com/photo-1716916843496-7dadfdb205c8?q=80&w=1937&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+  "https://images.unsplash.com/photo-1681708765556-b58f95e74cbc?q=80&w=2071&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+
+  "https://images.unsplash.com/photo-1651421569877-9f714e7822ba?q=80&w=1932&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+  "https://images.unsplash.com/photo-1654280983312-110b5b422397?q=80&w=1932&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+  "https://images.unsplash.com/photo-1716916843496-7dadfdb205c8?q=80&w=1937&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+  "https://images.unsplash.com/photo-1681708765556-b58f95e74cbc?q=80&w=2071&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+
+  "https://images.unsplash.com/photo-1651421569877-9f714e7822ba?q=80&w=1932&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+  "https://images.unsplash.com/photo-1654280983312-110b5b422397?q=80&w=1932&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+  "https://images.unsplash.com/photo-1716916843496-7dadfdb205c8?q=80&w=1937&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+  "https://images.unsplash.com/photo-1681708765556-b58f95e74cbc?q=80&w=2071&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+
+  "https://images.unsplash.com/photo-1651421569877-9f714e7822ba?q=80&w=1932&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+  "https://images.unsplash.com/photo-1654280983312-110b5b422397?q=80&w=1932&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+  "https://images.unsplash.com/photo-1716916843496-7dadfdb205c8?q=80&w=1937&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+  "https://images.unsplash.com/photo-1681708765556-b58f95e74cbc?q=80&w=2071&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+
+  "https://images.unsplash.com/photo-1651421569877-9f714e7822ba?q=80&w=1932&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+  "https://images.unsplash.com/photo-1654280983312-110b5b422397?q=80&w=1932&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+  "https://images.unsplash.com/photo-1716916843496-7dadfdb205c8?q=80&w=1937&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+  "https://images.unsplash.com/photo-1681708765556-b58f95e74cbc?q=80&w=2071&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+
+]
+
 # Create Starships
-starships = Starship.create!([
+starships = [
   { name: 'Millennium Falcon', description: 'The fastest ship in the galaxy.', weapons: 'Laser cannons, Quad laser turrets', upgrades: 'Hyperdrive, Smuggling compartments', price: 5000, mass: 100000, top_speed: 1050, user: users[1], address: 'Mos Eisley, Tatooine', latitude: 25.687243, longitude: 42.598725 },
   { name: 'X-Wing Fighter', description: 'Rebel Alliance fighter.', weapons: 'Proton torpedoes, Laser cannons', upgrades: 'Shield generator', price: 3500, mass: 12000, top_speed: 1050, user: users[0], address: 'Yavin 4', latitude: 20.865134, longitude: -89.619915 },
   { name: 'Slave I', description: 'Boba Fett’s pursuit craft.', weapons: 'Ion cannons, Seismic charges', upgrades: 'Tracking systems', price: 4500, mass: 52000, top_speed: 850, user: users[3], address: 'Kamino', latitude: -0.9067, longitude: -160.6547 },
@@ -36,15 +67,20 @@ starships = Starship.create!([
   { name: 'Rocinante', description: 'Martian gunship.', weapons: 'PDCs, Torpedoes', upgrades: 'Advanced sensors', price: 8000, mass: 140000, top_speed: 1500, user: users[0], address: 'Ceres Station', latitude: -15.25, longitude: 10.56 },
   { name: 'Event Horizon', description: 'Experimental gravity drive ship.', weapons: 'None', upgrades: 'Gravity drive', price: 10000, mass: 1500000, top_speed: 2000, user: users[3], address: 'Neptune Orbit', latitude: -60.5, longitude: 23.1 },
   { name: 'Bebop', description: 'Bounty hunter\'s ship.', weapons: 'Cannons', upgrades: 'Fishing nets', price: 4500, mass: 100000, top_speed: 900, user: users[4], address: 'Mars, Outer Solar System', latitude: -4.5, longitude: 137.4 }
-])
+
+]
+
+starships.each_with_index do |starship_attributes, index|
+  starship = Starship.create!(starship_attributes)
+  starship.photo.attach(io: URI.open(image_urls[index]), filename: "placeholder.jpg", content_type: "image/jpeg")
+end
 
 # Create Bookings
 Booking.create!([
-  { starship: starships[0], user: users[0], starts_date: Date.today, end_date: Date.today + 5, status: 0 },
-  { starship: starships[1], user: users[1], starts_date: Date.today + 10, end_date: Date.today + 15, status: 0 },
-  { starship: starships[2], user: users[2], starts_date: Date.today - 5, end_date: Date.today - 1, status: 1 },
-  { starship: starships[3], user: users[3], starts_date: Date.today, end_date: Date.today + 3, status: 0 },
-  { starship: starships[4], user: users[4], starts_date: Date.today + 20, end_date: Date.today + 25, status: 0 }
+  { starship: Starship.first, user: users[0], starts_date: Date.today, end_date: Date.today + 5, status: 0 },
+  { starship: Starship.second, user: users[1], starts_date: Date.today + 10, end_date: Date.today + 15, status: 0 },
+  { starship: Starship.third, user: users[2], starts_date: Date.today - 5, end_date: Date.today - 1, status: 1 },
+  # Add more bookings as needed...
 ])
 
 puts 'Seeding complete!'

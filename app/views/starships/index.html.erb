@@ -1,11 +1,13 @@
 <div class="container">
-  <h1>Futuristic Spaceship Marketplace</h1>
-  <%# <div id="carousel">
-    <!-- 3D moving carousels go here -->
-  </div> %>
+  <h1>Select Your Starship Trooper</h1>
   <div class="spaceships">
-    <% @starships.each do |spaceship| %>
-      <%= link_to spaceship.name, spaceship %>
+    <% @starships.each do |starship| %>
+      <div class="index-cards">
+        <%= link_to starship do %>
+            <h3><%= starship.name %></h3>
+            <%= cl_image_tag starship.photo.key, height: 200, width: 300, crop: :fill %>
+        <% end %>
+      </div>
       <br>
     <% end %>
   </div>

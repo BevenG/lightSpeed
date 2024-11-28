@@ -1,1 +1,42 @@
-// Specific CSS for your home-page
+/* Styles for the home page */
+
+h2, h3, p, a {
+  font-family: $body-font;
+  color: black;
+}
+
+a {
+  text-decoration: none;
+}
+
+h1 {
+  text-align: center;
+  margin-top: 16px;
+  font-family: $body-font;
+}
+
+.spaceships {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 0.8em;
+  margin: 2em 0;
+}
+
+.index-cards {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  width: 30%;
+  padding: 2em;
+  margin: 0.8em;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s, box-shadow 0.3s;
+
+  img {
+    border-radius: 8px;
+
+  }
+}

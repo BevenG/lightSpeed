@@ -20,4 +20,3 @@ export default class extends Controller {
     this.declineTarget.innerHTML = '<p>Declined</p>';
   }
 }
-

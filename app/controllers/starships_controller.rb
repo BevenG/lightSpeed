@@ -1,6 +1,10 @@
 class StarshipsController < ApplicationController
   def index
     @starships = Starship.all
+    if params[:query].present?
+      sql_subquery = "name ILIKE :query OR address ILIKE :query"
+      @starships = @starships.where(sql_subquery, query: "%#{params[:query]}%")
+    end
     @markers = @starships.geocoded.map do |starship|
       {
         lat: starship.latitude,

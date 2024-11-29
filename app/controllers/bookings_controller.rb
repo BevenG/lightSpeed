@@ -1,9 +1,9 @@
 class BookingsController < ApplicationController
   def index
     all_bookings = Booking.all
-    starships = Starship.where(user: current_user)
+    @starships = Starship.where(user: current_user)
     @bookings = []
-    starships.each do |starship|
+    @starships.each do |starship|
       all_bookings.each do |booking|
         @bookings << booking if booking.starship == starship
       end
@@ -62,6 +62,25 @@ class BookingsController < ApplicationController
     end
   end
 
+  def edit
+    @starship = Starship.find(params[:id])
+  end
+
+  def update
+    @starship = Starship.find(params[:id])
+    if @starship.update(starship_params)
+      redirect_to starships_path, notice: 'starship updated successfully.'
+    else
+      render :edit, alert: 'Failed to update starship.'
+    end
+  end
+
+  def destroy
+    @booking = Booking.find(params[:id])
+    @booking.destroy
+    redirect_to bookings_path, notice: 'Booking was successfully deleted.'
+  end
+
   private
 
   def set_booking
@@ -71,8 +90,8 @@ class BookingsController < ApplicationController
   def booking_params
     params.require(:booking).permit(:start_date, :end_date, :status, :starship_id, :user_id)
   end
+
+  def starship_params
+    params.require(:starship).permit(:name, :description, :price, :top_speed, :upgrades, :mass, :weapons, :photo)
+  end
 end
-#   def booking_params
-#     params.require(:booking).permit(:starts_date, :end_date)
-#   end
-# end

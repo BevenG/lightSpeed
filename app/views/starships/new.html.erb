@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container m-55">
   <div class="new-starship">
     <%= simple_form_for @starship do |f| %>
       <%= f.input :name %>
@@ -9,7 +9,9 @@
       <%= f.input :mass %>
       <%= f.input :weapons %>
       <%= f.input :photo, as: :file %>
-      <%= f.submit %>
+      <div class="form-actions">
+        <%= f.button :submit, "Submit", class: "btn-primary" %>
+      </div>
     <% end %>
     </div>
 </div>

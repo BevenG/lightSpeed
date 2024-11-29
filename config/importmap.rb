@@ -10,3 +10,6 @@ pin "@popperjs/core", to: "popper.js", preload: true
 pin "flatpickr" # @4.6.13
 pin "mapbox-gl", to: "https://ga.jspm.io/npm:mapbox-gl@3.1.2/dist/mapbox-gl.js"
 pin "process", to: "https://ga.jspm.io/npm:@jspm/core@2.1.0/nodelibs/browser/process-production.js"
+pin "scripts/background", to: "scripts/background.js"
+pin "three", to: "https://cdnjs.cloudflare.com/ajax/libs/three.js/0.147.0/three.module.min.js"
+

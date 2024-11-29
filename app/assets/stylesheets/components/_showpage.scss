@@ -1,0 +1,70 @@
+.container-show {
+  position: relative; /* Ensure elements can be positioned relative to this container */
+  display: flex; /* Use CSS Grid for layout */
+  flex-direction: row; /* Two columns: info on the left, image and button on the right */
+  justify-content: space-around;
+  align-items: center;
+  align-self: center;
+  gap: 20px; /* Space between columns and rows */
+  padding: 20px;
+  color: white;
+  margin-top: 64px;
+  scale: 1.05;
+}
+
+.info-container {
+  display: grid;
+  grid-template-columns: 300px 300px; /* Two columns for description and price */
+  grid-template-rows: auto auto; /* Two rows: top and bottom */
+  gap: 20px; /* Even spacing between boxes */
+}
+
+.info-box, .info-box2, .booking-container, .dates-container {
+  background-color: rgba(255, 255, 255, 0.1); /* Slightly transparent background */
+  padding: 15px;
+  border-radius: 8px;
+  border: 1px solid rgba(173, 216, 230, 0.8); /* Thin whitish blue border */
+  transition: all 0.3s ease; /* Smooth transition for hover effects */
+}
+
+.info-box:hover, .info-box2:hover, .booking-container:hover, .dates-container:hover {
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.8), 0 0 20px rgba(255, 255, 255, 0.6); /* White glow effect on hover */
+}
+
+.info-box2 {
+  grid-column: span 2; /* Span across both columns */
+}
+
+.image-wrapper {
+  display: flex;
+  flex-direction: column; /* Stack the image and button vertically */
+  align-items: center; /* Center-align items horizontally */
+  justify-content: center; /* Center items vertically */
+  grid-column: 2 / 3; /* Place the image and button in the right column */
+}
+
+.starship-image {
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow for the image */
+  width: 400px; /* Adjust as needed */
+  height: 300px; /* Adjust as needed */
+  margin-bottom: 20px; /* Space between the image and the button */
+}
+
+.booking-container {
+  text-align: center;
+  width: auto; /* Adjust width dynamically */
+  cursor: pointer; /* Pointer cursor for the button */
+  border: 1px solid rgba(173, 216, 230, 0.8); /* Thin whitish blue border */
+  box-shadow: none; /* Default no shadow */
+}
+
+.booking-container:hover {
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.8), 0 0 20px rgba(255, 255, 255, 0.6); /* White glow effect on hover */
+}
+
+.booking-container .btn {
+  color: white; /* Default color */
+  text-decoration: none; /* Optional: remove underline */
+  transition: color 0.3s ease; /* Smooth transition for hover effect */
+}

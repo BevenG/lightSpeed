@@ -34,15 +34,61 @@
   justify-content: space-between;
   align-items: center;
   width: 90%;
-  height: 40px;
+  margin: 10px auto; /* Center horizontally and add space between starship elements */
   border: 1px solid black;
-  padding: 8px;
+  padding: 8px 16px;
   border-radius: 8px;
-  gap: 0.8em;
+  gap: 1em; /* Space between items */
+  background-color: #f9f9f9; /* Optional: light background */
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow for visual depth */
 }
 
-.starship .buttons .btn {
-  height: 90%;
+.name {
+  flex: 2; /* Larger space for name */
+  font-size: 1.1rem;
+  font-weight: bold;
+}
+
+.status {
+  font-size: 1rem;
+  color: #555;
+}
+
+.actions {
+  flex: 1; /* Allocate space for actions */
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end; /* Align buttons to the right */
+  gap: 10px; /* Space between Approve and Decline buttons */
+}
+
+.actions .btn {
+  padding: 8px 16px;
+  font-size: 0.9rem;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.btn-primary {
+  background-color: #28a745;
+  color: white;
+  border: none;
+  transition: background-color 0.3s ease;
+}
+
+.btn-primary:hover {
+  background-color: #218838;
+}
+
+.btn-danger {
+  background-color: #dc3545;
+  color: white;
+  border: none;
+  transition: background-color 0.3s ease;
+}
+
+.btn-danger:hover {
+  background-color: #c82333;
 }
 
 /* Carousel Section */
@@ -65,7 +111,7 @@
 
 .book-ss-card {
   flex: 0 0 250px; /* Card width */
-  background-color: #fff;
+  background-color: rgba(255, 255, 255, 0.1);
   border: 1px solid #ddd;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   text-align: center;
@@ -90,4 +136,41 @@
 
 .carousel-track:hover {
   animation-play-state: paused; /* Pauses scrolling animation */
+}
+.booking-container {
+  text-align: center;
+  width: auto;
+  cursor: pointer;
+  border: 1px solid rgba(173, 216, 230, 0.8);
+  padding: 8px 16px;
+  border-radius: 8px;
+  font-size: 14px;
+  background: rgba(0, 0, 0, 0.5);
+  color: white;
+  transition: box-shadow 0.3s ease;
+}
+
+.booking-container:hover {
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.8), 0 0 20px rgba(255, 255, 255, 0.6);
+}
+.container.booking {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.bookings {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 90%;
+  max-width: 800px;
+  margin: 16px auto;
+}
+
+.spaceships-book {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
 }

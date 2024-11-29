@@ -1,50 +1,40 @@
 # db/seeds.rb
-
 require "open-uri"
-
 # Clear existing data
 User.destroy_all
 Starship.destroy_all
 Booking.destroy_all
-
 # Create Users
 users = User.create!([
-  { email: 'mehdi@example.com', password: 'password' },
-  { email: 'grant@example.com', password: 'password' },
-  { email: 'dima@example.com', password: 'password' },
-  { email: 'vader@empire.com', password: 'password' },
-  { email: 'obiwan@jedi.com', password: 'password' }
+  { username: "mehdiculous", email: 'mehdi@example.com', password: 'password' },
+  { username: "heartless_beven", email: 'grant@example.com', password: 'password' },
+  { username: "dimakaar", email: 'dima@example.com', password: 'password' },
+  { username: "iamyourdaddy", email: 'vader@empire.com', password: 'password' },
+  { username: "typeshii", email: 'obiwan@jedi.com', password: 'password' }
 ])
-
 # Placeholder image URL
 image_urls = [
-  "https://images.unsplash.com/photo-1651421569877-9f714e7822ba?q=80&w=1932&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-  "https://images.unsplash.com/photo-1654280983312-110b5b422397?q=80&w=1932&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-  "https://images.unsplash.com/photo-1716916843496-7dadfdb205c8?q=80&w=1937&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-  "https://images.unsplash.com/photo-1681708765556-b58f95e74cbc?q=80&w=2071&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-
-  "https://images.unsplash.com/photo-1651421569877-9f714e7822ba?q=80&w=1932&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-  "https://images.unsplash.com/photo-1654280983312-110b5b422397?q=80&w=1932&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-  "https://images.unsplash.com/photo-1716916843496-7dadfdb205c8?q=80&w=1937&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-  "https://images.unsplash.com/photo-1681708765556-b58f95e74cbc?q=80&w=2071&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-
-  "https://images.unsplash.com/photo-1651421569877-9f714e7822ba?q=80&w=1932&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-  "https://images.unsplash.com/photo-1654280983312-110b5b422397?q=80&w=1932&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-  "https://images.unsplash.com/photo-1716916843496-7dadfdb205c8?q=80&w=1937&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-  "https://images.unsplash.com/photo-1681708765556-b58f95e74cbc?q=80&w=2071&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-
-  "https://images.unsplash.com/photo-1651421569877-9f714e7822ba?q=80&w=1932&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-  "https://images.unsplash.com/photo-1654280983312-110b5b422397?q=80&w=1932&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-  "https://images.unsplash.com/photo-1716916843496-7dadfdb205c8?q=80&w=1937&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-  "https://images.unsplash.com/photo-1681708765556-b58f95e74cbc?q=80&w=2071&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-
-  "https://images.unsplash.com/photo-1651421569877-9f714e7822ba?q=80&w=1932&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-  "https://images.unsplash.com/photo-1654280983312-110b5b422397?q=80&w=1932&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-  "https://images.unsplash.com/photo-1716916843496-7dadfdb205c8?q=80&w=1937&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-  "https://images.unsplash.com/photo-1681708765556-b58f95e74cbc?q=80&w=2071&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-
+  "https://res.cloudinary.com/datfrkg4n/image/upload/v1732872773/starships/tpbtvzb0qupr9skg80t8.png",
+  "https://res.cloudinary.com/datfrkg4n/image/upload/v1732872773/starships/qhnyuogdegckvu3r8di7.png",
+  "https://res.cloudinary.com/datfrkg4n/image/upload/v1732872773/starships/xj2mmshkxp31e2erkexl.png",
+  "https://res.cloudinary.com/datfrkg4n/image/upload/v1732872773/starships/yb0h3y68dzpvspkecrtz.png",
+  "https://res.cloudinary.com/datfrkg4n/image/upload/v1732872773/starships/mvo1yfr8fs4lmymb6urw.png",
+  "https://res.cloudinary.com/datfrkg4n/image/upload/v1732872773/starships/ju1ru5tiyog75txdyxna.png",
+  "https://res.cloudinary.com/datfrkg4n/image/upload/v1732872773/starships/hjohb6lk5ongwk4ox0xq.png",
+  "https://res.cloudinary.com/datfrkg4n/image/upload/v1732872773/starships/x8rq22cblatu38ia7ghz.png",
+  "https://res.cloudinary.com/datfrkg4n/image/upload/v1732872772/starships/eypoc5bvlcztv4qgcu1b.png",
+  "https://res.cloudinary.com/datfrkg4n/image/upload/v1732872772/starships/ci1uxd6qeuprqgipcb3b.png",
+  "https://res.cloudinary.com/datfrkg4n/image/upload/v1732872772/starships/wdii6dwhq658igzhs332.png",
+  "https://res.cloudinary.com/datfrkg4n/image/upload/v1732872772/starships/s6rqmdtd6dtoez5abbkq.png",
+  "https://res.cloudinary.com/datfrkg4n/image/upload/v1732872772/starships/ixo0jyzu3v6hvmepbemn.png",
+  "https://res.cloudinary.com/datfrkg4n/image/upload/v1732872772/starships/tbjkokrrynqkp641u49o.png",
+  "https://res.cloudinary.com/datfrkg4n/image/upload/v1732872773/starships/tpbtvzb0qupr9skg80t8.png",
+  "https://res.cloudinary.com/datfrkg4n/image/upload/v1732872773/starships/qhnyuogdegckvu3r8di7.png",
+  "https://res.cloudinary.com/datfrkg4n/image/upload/v1732872773/starships/xj2mmshkxp31e2erkexl.png",
+  "https://res.cloudinary.com/datfrkg4n/image/upload/v1732872773/starships/x8rq22cblatu38ia7ghz.png",
+  "https://res.cloudinary.com/datfrkg4n/image/upload/v1732872772/starships/eypoc5bvlcztv4qgcu1b.png",
+  "https://res.cloudinary.com/datfrkg4n/image/upload/v1732872772/starships/ci1uxd6qeuprqgipcb3b.png",
 ]
-
 # Create Starships
 starships = [
   { name: 'Millennium Falcon', description: 'The fastest ship in the galaxy.', weapons: 'Laser cannons, Quad laser turrets', upgrades: 'Hyperdrive, Smuggling compartments', price: 50000000, mass: 100000, top_speed: 1050, user: users[1], address: 'Mos Eisley, Tatooine', latitude: 25.687243, longitude: 42.598725 },
@@ -67,14 +57,11 @@ starships = [
   { name: 'Rocinante', description: 'Martian gunship.', weapons: 'PDCs, Torpedoes', upgrades: 'Advanced sensors', price: 800000000, mass: 140000, top_speed: 1500, user: users[0], address: 'Ceres Station', latitude: -15.25, longitude: 10.56 },
   { name: 'Event Horizon', description: 'Experimental gravity drive ship.', weapons: 'None', upgrades: 'Gravity drive', price: 100000000, mass: 1500000, top_speed: 2000, user: users[3], address: 'Neptune Orbit', latitude: -60.5, longitude: 23.1 },
   { name: 'Bebop', description: 'Bounty hunter\'s ship.', weapons: 'Cannons', upgrades: 'Fishing nets', price: 450000000, mass: 100000, top_speed: 900, user: users[4], address: 'Mars, Outer Solar System', latitude: -4.5, longitude: 137.4 }
-
 ]
-
 starships.each_with_index do |starship_attributes, index|
   starship = Starship.create!(starship_attributes)
   starship.photo.attach(io: URI.open(image_urls[index]), filename: "placeholder.jpg", content_type: "image/jpeg")
 end
-
 # Create Bookings
 Booking.create!([
   { starship: Starship.first, user: users[0], starts_date: Date.today, end_date: Date.today + 5, status: 0 },
@@ -82,5 +69,4 @@ Booking.create!([
   { starship: Starship.third, user: users[2], starts_date: Date.today - 5, end_date: Date.today - 1, status: 1 },
   # Add more bookings as needed...
 ])
-
 puts 'Seeding complete!'

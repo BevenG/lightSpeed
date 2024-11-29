@@ -1,12 +1,15 @@
-
-<%= simple_form_for @starship do |f| %>
-  <%= f.input :name %>
-  <%= f.input :description %>
-  <%= f.input :price %>
-  <%= f.input :top_speed %>
-  <%= f.input :upgrades %>
-  <%= f.input :mass %>
-  <%= f.input :weapons %>
-  <%= f.input :photo, as: :file %>
-  <%= f.submit %>
-<% end %>
+<div class="container">
+  <div class="new-starship">
+    <%= simple_form_for @starship do |f| %>
+      <%= f.input :name %>
+      <%= f.input :description %>
+      <%= f.input :price %>
+      <%= f.input :top_speed %>
+      <%= f.input :upgrades %>
+      <%= f.input :mass %>
+      <%= f.input :weapons %>
+      <%= f.input :photo, as: :file %>
+      <%= f.submit %>
+    <% end %>
+    </div>
+</div>

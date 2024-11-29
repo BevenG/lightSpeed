@@ -1,0 +1,16 @@
+#threejs-container {
+  position: absolute; /* Allow it to be positioned above the background */
+  top: 0;
+  left: 0;
+  width: 100vw; /* Full viewport width */
+  height: 100vh; /* Full viewport height */
+  z-index: 10; /* Higher than the background image */
+  pointer-events: none; /* Allows user interactions to pass through if needed */
+}
+// body {
+// 	width: 100vw;
+// 	height: 100vh;
+// 	margin: 0;
+// 	background: #000;
+// 	overflow: hidden;
+// }

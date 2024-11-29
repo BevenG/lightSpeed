@@ -1,47 +1,32 @@
-<div class="container starship-details">
-  <!-- Starship Image -->
-  <div class="starship-image">
-    <%= cl_image_tag @starship.photo.key, height: 500, width: 1000, crop: :fill, class: "img-fluid rounded" %>
-  </div>
+<div class="container-show">
+  <!-- Left Column: Info Boxes -->
+  <div class="info-container">
+    <!-- Top Row -->
+    <div class="info-box">
+      <p>Model: <%= @starship.name %></p>
+      <p>Top speed: <%= @starship.top_speed %> lightYrs/h</p>
+      <p>Mass: <%= @starship.mass %> kg</p>
+      <p>Price: $<%= @starship.price %></p>
+    </div>
+    <div class="info-box">
+      <p>Description: <%= @starship.description %></p>
 
-  <!-- Starship Info -->
-  <div class="starship-info mt-4">
-    <h1 class="starship-name"><%= @starship.name %></h1>
-    <p class="text-muted">Posted by <span class="highlight"><%= @starship.user.email %></span></p>
-
-    <div class="starship-stats d-flex justify-content-between mt-3">
-      <div class="stat">
-        <strong>Price:</strong> <span class="value">R<%= @starship.price %></span>
-      </div>
-      <div class="stat">
-        <strong>Mass:</strong> <span class="value"><%= @starship.mass %> kg</span>
-      </div>
-      <div class="stat">
-        <strong>Top Speed:</strong> <span class="value"><%= @starship.top_speed %> km/h</span>
-      </div>
     </div>
 
-    <div class="starship-description mt-5">
-      <h2>Description</h2>
-      <p><%= @starship.description.presence || "No description available." %></p>
+    <!-- Bottom Row -->
+    <div class="info-box2">
+      <p>Modifications: <%= @starship.weapons %>. <%= @starship.upgrades %></p>
     </div>
-
-    <div class="starship-features mt-5">
-      <h2>Features</h2>
-      <ul>
-        <li><strong>Weapons:</strong> <%= @starship.weapons.presence || "None listed" %></li>
-        <li><strong>Upgrades:</strong> <%= @starship.upgrades.presence || "None listed" %></li>
-      </ul>
-    </div>
-
-    <div class="starship-location mt-5">
-      <h2>Location</h2>
-      <p><%= @starship.address.presence || "No address provided" %></p>
+    <div class="info-box2">
+      <p>Pilot: <%= @starship.user.username %></p>
     </div>
   </div>
 
-  <!-- Booking Button -->
-  <div class="mt-5 text-center">
-    <%= link_to "Book Now", new_starship_booking_path(@starship), class: "btn btn-primary btn-lg" %>
+  <!-- Right Column: Image and Button -->
+  <div class="image-wrapper">
+    <%= cl_image_tag @starship.photo.key, height: 300, width: 400, crop: :fill, class: "starship-image" %>
+    <div class="booking-container" data-controller="glow">
+      <%= link_to "NEGOTIATE", new_starship_booking_path(@starship), class: "btn primary" %>
+    </div>
   </div>
 </div>

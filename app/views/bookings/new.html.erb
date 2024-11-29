@@ -1,18 +1,30 @@
-<div class="container">
-  <div class="calendar">
-    <div> select dates for hire </div>
+<div class="center-container">
+  <div class="date-border-container">
+    <div class="calendar">
       <div>
-        <%= simple_form_for([@starship, @booking]) do |f| %>
+        <h2>Select Dates for Hire</h2>
+      </div>
+      <%= simple_form_for([@starship, @booking]) do |f| %>
+        <div class="dates-container" data-controller="glow">
           <%= f.input :starts_date,
-          as: :string,
-          input_html: { data: { controller: "datepicker" } } %>
-
+            as: :string,
+            input_html: { data: { controller: "datepicker" } } %>
+        </div>
+        <div class="dates-container" data-controller="glow">
           <%= f.input :end_date,
             as: :string,
             input_html: { data: { controller: "datepicker" } } %>
+        </div>
+        <div class="submit-container">
+          <%= f.button :submit, class: "btn-primary mt-4" %>
+        </div>
+      <% end %>
+      <!-- Lightning Button Directly Under Heading -->
+      <%# <div class="lightning-button-container" data-controller="glow"> %>
+  <%# <button class="lightning-button">Click Me</button> %>
+</div>
 
-          <%= f.button :submit %>
-        <% end %>
-      </div>
+    </div>
+    </div>
   </div>
 </div>

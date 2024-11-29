@@ -16,19 +16,24 @@
   </div>
 </div>
 
-  <div class="spaceships">
+<div class="infinite-slider" data-controller="slider">
+  <div class="slider-track"
+       data-slider-target="track"
+       data-action="mouseenter->slider#pauseAnimation mouseleave->slider#resumeAnimation wheel->slider#onWheel">
     <% @starships.each do |starship| %>
-      <div class="index-cards">
-         <div class=blob>
-            <%= link_to starship do %>
-                <h3><%= starship.name %></h3>
-                <%= cl_image_tag starship.photo.key, height: 500, width: 300, crop: :fill %>
-          <% end %>
-        </div>
+      <div class="slider-item">
+        <%= link_to starship do %>
+          <%= cl_image_tag starship.photo.key, height: 400, width: 300, crop: :fill %>
+          <div class="slider-name">
+            <h3><%= starship.name %></h3>
+          </div>
+        <% end %>
       </div>
-      <br>
     <% end %>
   </div>
+</div>
+
+
 </div>
 <div style="width: 100%; height: 600px;" data-controller="map"
   data-map-markers-value="<%= @markers.to_json %>"

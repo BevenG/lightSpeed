@@ -1,10 +1,15 @@
 .container-show {
   position: relative; /* Ensure elements can be positioned relative to this container */
-  display: grid; /* Use CSS Grid for layout */
-  grid-template-columns: 1fr 1fr; /* Two columns: info on the left, image and button on the right */
+  display: flex; /* Use CSS Grid for layout */
+  flex-direction: row; /* Two columns: info on the left, image and button on the right */
+  justify-content: space-around;
+  align-items: center;
+  align-self: center;
   gap: 20px; /* Space between columns and rows */
   padding: 20px;
   color: white;
+  margin-top: 64px;
+  scale: 1.05;
 }
 
 .info-container {
@@ -22,7 +27,7 @@
   transition: all 0.3s ease; /* Smooth transition for hover effects */
 }
 
-.info-box:hover, .info-box2:hover, .booking-container:hover, .dates-container:hover{
+.info-box:hover, .info-box2:hover, .booking-container:hover, .dates-container:hover {
   box-shadow: 0 0 10px rgba(255, 255, 255, 0.8), 0 0 20px rgba(255, 255, 255, 0.6); /* White glow effect on hover */
 }
 

@@ -9,15 +9,16 @@
       <p>Price: $<%= @starship.price %></p>
     </div>
     <div class="info-box">
-      <p>Description:</p>
+      <p>Description: <%= @starship.description %></p>
+
     </div>
 
     <!-- Bottom Row -->
     <div class="info-box2">
-      <p>Modifications:</p>
+      <p>Modifications: <%= @starship.weapons %>. <%= @starship.upgrades %></p>
     </div>
     <div class="info-box2">
-      <p>Pilot:</p>
+      <p>Pilot: <%= @starship.user.username %></p>
     </div>
   </div>
 
@@ -28,12 +29,4 @@
       <%= link_to "NEGOTIATE", new_starship_booking_path(@starship), class: "btn primary" %>
     </div>
   </div>
-</div>
-
-<div data-controller="reload">
-  <div data-reload-target="starships">
-    <p>Starship Details Here</p>
-  </div>
-  <button data-reload-target="approve" data-action="click->reload#accept">Approve</button>
-  <button data-reload-target="decline" data-action="click->reload#reject">Decline</button>
 </div>

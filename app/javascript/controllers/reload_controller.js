@@ -10,13 +10,19 @@ export default class extends Controller {
     console.log("Decline target:", this.declineTarget);
   }
 
-  accept(event) {
-    event.preventDefault(); // Correct preventDefault syntax
-    this.approveTarget.innerHTML = '<p>Approved</p>';
+  async accept(event) {
+    event.preventDefault();
+    const response = await fetch(event.target.dataset.url, { method: "PATCH" });
+    if (response.ok) {
+      this.starshipsTarget.innerHTML = await response.text();
+    }
   }
 
-  reject(event) {
-    event.preventDefault(); // Correct preventDefault syntax
-    this.declineTarget.innerHTML = '<p>Declined</p>';
+  async reject(event) {
+    event.preventDefault();
+    const response = await fetch(event.target.dataset.url, { method: "PATCH" });
+    if (response.ok) {
+      this.starshipsTarget.innerHTML = await response.text();
+    }
   }
 }

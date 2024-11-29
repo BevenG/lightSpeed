@@ -1,7 +1,7 @@
 import { Controller } from "@hotwired/stimulus";
 
 export default class extends Controller {
-  static targets = ["starships", "approve", "decline"];
+  static targets = ["starships", "approve", "decline"]; // Define targets
 
   connect() {
     console.log("Reload controller connected");
@@ -11,14 +11,13 @@ export default class extends Controller {
   }
 
   accept(event) {
-    prevent default
-    
+    event.preventDefault(); // Correct preventDefault syntax
     this.approveTarget.innerHTML = '<p>Approved</p>';
   }
 
   reject(event) {
-    prevent default
-
+    event.preventDefault(); // Correct preventDefault syntax
     this.declineTarget.innerHTML = '<p>Declined</p>';
   }
 }
+

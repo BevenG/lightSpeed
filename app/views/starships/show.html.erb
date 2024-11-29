@@ -1,12 +1,39 @@
-
 <div class="container">
-  <h1><%= @starship.name %></h1>
-    <p>$<%= @starship.price %></p>
-    <p><%= @starship.mass %>kg</p>
-    <p><%= @starship.top_speed %>km/h</p>
-  <p>Posted by <%= @starship.user.email %></p>
+  <!-- Left Column: Info Boxes -->
+  <div class="info-container">
+    <!-- Top Row -->
+    <div class="info-box">
+      <p>Model: <%= @starship.name %></p>
+      <p>Top speed: <%= @starship.top_speed %> lightYrs/h</p>
+      <p>Mass: <%= @starship.mass %> kg</p>
+      <p>Price: $<%= @starship.price %></p>
+    </div>
+    <div class="info-box">
+      <p>Description:</p>
+    </div>
+
+    <!-- Bottom Row -->
+    <div class="info-box2">
+      <p>Modifications:</p>
+    </div>
+    <div class="info-box2">
+      <p>Pilot:</p>
+    </div>
+  </div>
+
+  <!-- Right Column: Image and Button -->
+  <div class="image-wrapper">
+    <%= cl_image_tag @starship.photo.key, height: 300, width: 400, crop: :fill, class: "starship-image" %>
+    <div class="booking-container" data-controller="glow">
+      <%= link_to "NEGOTIATE", new_starship_booking_path(@starship), class: "btn primary" %>
+    </div>
+  </div>
 </div>
 
-<%= link_to "Book Now", new_starship_booking_path(@starship), class: "btn primary" %>
-
-<%= cl_image_tag @starship.photo.key, height: 300, width: 400, crop: :fill %>
+<div data-controller="reload">
+  <div data-reload-target="starships">
+    <p>Starship Details Here</p>
+  </div>
+  <button data-reload-target="approve" data-action="click->reload#accept">Approve</button>
+  <button data-reload-target="decline" data-action="click->reload#reject">Decline</button>
+</div>
